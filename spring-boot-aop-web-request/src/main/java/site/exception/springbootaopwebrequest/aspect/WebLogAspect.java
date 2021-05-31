@@ -3,6 +3,7 @@ package site.exception.springbootaopwebrequest.aspect;
 import com.google.gson.Gson;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -102,6 +103,7 @@ public class WebLogAspect {
     public String getAspectLogDescription(JoinPoint joinPoint)
             throws Exception {
         String targetName = joinPoint.getTarget().getClass().getName();
+        //joinPoint.getSignature() : 获取方法的完整签名
         String methodName = joinPoint.getSignature().getName();
         Object[] arguments = joinPoint.getArgs();
         Class targetClass = Class.forName(targetName);
